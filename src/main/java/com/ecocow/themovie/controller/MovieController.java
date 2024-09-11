@@ -3,12 +3,10 @@ package com.ecocow.themovie.controller;
 import com.ecocow.themovie.dto.CreditsDto;
 import com.ecocow.themovie.dto.MovieDetailsDto;
 import com.ecocow.themovie.dto.MovieResultDto;
+import com.ecocow.themovie.dto.SearchMovieDto;
 import com.ecocow.themovie.service.MovieService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
@@ -20,8 +18,8 @@ public class MovieController {
     private final MovieService movieService;
 
     @GetMapping
-    private MovieDetailsDto getMovie(@RequestParam Long movieId, @RequestParam String language) throws IOException, InterruptedException {
-        return movieService.getMovie(movieId,language);
+    private MovieDetailsDto getMovie(@RequestParam Long movieId, @RequestParam String language, @RequestParam(required = false) String append_to_response) throws IOException, InterruptedException {
+        return movieService.getMovie(movieId,language,append_to_response);
     }
 
     @GetMapping("/recommend")
@@ -30,8 +28,8 @@ public class MovieController {
     }
 
     @GetMapping("/popular")
-    private MovieResultDto getPopularMovie(@RequestParam String language, @RequestParam int page) throws IOException, InterruptedException {
-        return movieService.getPopularMovie(language,page);
+    private MovieResultDto getPopularMovie(@RequestParam String language, @RequestParam int page, @RequestParam(required = false) String region) throws IOException, InterruptedException {
+        return movieService.getPopularMovie(language,page,region);
     }
 
     @GetMapping("/cast")
@@ -45,8 +43,8 @@ public class MovieController {
     }
 
     @GetMapping("/search")
-    private MovieResultDto getSearchMovie(@RequestParam String query, @RequestParam boolean include_adult ,@RequestParam String language,@RequestParam int page) throws IOException, InterruptedException {
-        return movieService.getSearchMovie(query,include_adult,language,page);
+    private MovieResultDto getSearchMovie(@RequestBody SearchMovieDto searchMovieDto) throws IOException, InterruptedException {
+        return movieService.getSearchMovie(searchMovieDto);
     }
 
 
