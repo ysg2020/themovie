@@ -39,6 +39,15 @@ public class MovieController {
         return movieService.getCast(movieId,language);
     }
 
+    @GetMapping("/trending/All")
+    private MovieResultDto getTrending(@RequestParam String timeWindow, @RequestParam String language) throws IOException, InterruptedException {
+        return movieService.getTrendingAll(timeWindow,language);
+    }
+
+    @GetMapping("/search")
+    private MovieResultDto getSearchMovie(@RequestParam String query, @RequestParam boolean include_adult ,@RequestParam String language,@RequestParam int page) throws IOException, InterruptedException {
+        return movieService.getSearchMovie(query,include_adult,language,page);
+    }
 
 
 }
