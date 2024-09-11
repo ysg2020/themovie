@@ -32,6 +32,11 @@ public class MovieController {
         return movieService.getPopularMovie(language,page,region);
     }
 
+    @GetMapping("/upcoming")
+    private MovieResultDto getUpcomingMovie(@RequestParam String language, @RequestParam int page, @RequestParam(required = false) String region) throws IOException, InterruptedException {
+        return movieService.getUpcomingMovie(language,page,region);
+    }
+
     @GetMapping("/cast")
     private CreditsDto getCast(@RequestParam Long movieId, @RequestParam String language) throws IOException, InterruptedException {
         return movieService.getCast(movieId,language);

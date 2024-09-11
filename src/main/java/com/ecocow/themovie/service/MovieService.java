@@ -20,4 +20,6 @@ public interface MovieService {
      MovieResultDto getTrendingAll(String timeWindow, String language) throws IOException, InterruptedException;
 
      MovieResultDto getSearchMovie(SearchMovieDto searchMovieDto) throws IOException, InterruptedException;
+
+     MovieResultDto getUpcomingMovie(String language, int page, String region) throws IOException, InterruptedException;
 }

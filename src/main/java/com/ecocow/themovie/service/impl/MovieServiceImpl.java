@@ -28,7 +28,7 @@ public class MovieServiceImpl implements MovieService {
 
     private String movieUrl = "https://api.themoviedb.org/3/movie/";
     private String trendingAllUrl = "https://api.themoviedb.org/3/trending/all/";
-    private String searchMovieUrl = "https://api.themoviedb.org/3/search/movie";
+    private String searchMovieUrl = "https://api.themoviedb.org/3/search/movie/";
 
     @Override
     public MovieDetailsDto getMovie(Long movieId, String language, String append_to_response) throws IOException, InterruptedException {
@@ -69,6 +69,21 @@ public class MovieServiceImpl implements MovieService {
         return getTheMovieAPI(uriBuilder.toUriString(),MovieResultDto.class);
 
     }
+
+    @Override
+    public MovieResultDto getUpcomingMovie(String language, int page, String region) throws IOException, InterruptedException {
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(movieUrl)
+                .path("/upcoming")
+                .queryParam("language", language)
+                .queryParam("page", page);
+
+        if (region != null) {
+            uriBuilder.queryParam("region",region);
+        }
+
+        return getTheMovieAPI(uriBuilder.toUriString(),MovieResultDto.class);
+    }
+
 
     @Override
     public CreditsDto getCast(Long movieId, String language) throws IOException, InterruptedException {
@@ -124,6 +139,5 @@ public class MovieServiceImpl implements MovieService {
         return objectMapper.readValue(response.body(), responseType);
 
     }
-
 
 }
