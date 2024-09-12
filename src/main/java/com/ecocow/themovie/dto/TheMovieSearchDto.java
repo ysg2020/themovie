@@ -7,7 +7,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SearchMovieDto {
+public class TheMovieSearchDto {
 
     private String query;
     private boolean include_adult;

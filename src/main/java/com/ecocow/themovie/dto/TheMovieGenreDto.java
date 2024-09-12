@@ -7,9 +7,9 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductionCountryDto {
+public class TheMovieGenreDto {
 
-    private String iso_3166_1;
+    private Long id;
     private String name;
 
 }

@@ -9,10 +9,9 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MovieResultDto {
+public class TheMovieCreditsDto {
 
-    private int page;
-    private MovieDto[] results;
-    private int total_pages;
-    private int total_results;
+    private Long id;
+    private TheMovieCastDto[] cast;
+
 }

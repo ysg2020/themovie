@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CastDto {
+public class TheMovieCastDto {
 
     private Long id;                // 식별자
     private String name;            // 이름
