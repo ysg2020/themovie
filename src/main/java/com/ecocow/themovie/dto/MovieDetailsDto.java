@@ -23,6 +23,7 @@ public class MovieDetailsDto {
     private String overview;                                            // 개요
     private String posterPath;                                          // 포스터 이미지
     private List<MovieProductionCountryDto> productionCountries;        // 제작 국가
+    private List<MovieCastDto> casts;                                   // 출연진
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate releaseDate;                                      // 개봉일
@@ -41,6 +42,7 @@ public class MovieDetailsDto {
                 .overview(movie.getOverview())
                 .posterPath(movie.getPosterPath())
                 .productionCountries(movie.getProductionCountries().stream().map(MovieProductionCountryDto::fromEntity).toList())
+                .casts(movie.getCasts().stream().map(MovieCastDto::fromEntity).toList())
                 .releaseDate(movie.getReleaseDate())
                 .status(movie.isStatus())
                 .runtime(movie.getRuntime())
