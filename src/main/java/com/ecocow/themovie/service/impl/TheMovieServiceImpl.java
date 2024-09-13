@@ -28,7 +28,7 @@ public class TheMovieServiceImpl implements TheMovieService {
 
     private String movieUrl = "https://api.themoviedb.org/3/movie/";
     private String trendingAllUrl = "https://api.themoviedb.org/3/trending/all/";
-    private String searchMovieUrl = "https://api.themoviedb.org/3/search/movie/";
+    private String searchMovieUrl = "https://api.themoviedb.org/3/search/movie";
 
     @Override
     public TheMovieDetailsDto getMovie(Long movieId, String language, String append_to_response) throws IOException, InterruptedException {
